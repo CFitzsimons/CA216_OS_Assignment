@@ -1,27 +1,28 @@
-class Producer extends thread
-{
-  BoundedBuffer buffer;
-	Random r = new Random()
+import java.util.Random;
 
-	Producer(Boundedbuffer bbuffer)
-	{
-		buffer = bbuffer;
-	}
+package yulfy.leed.os;
 
-	void ProdInsert()
-	{
-		try
-		{
-			while(true)
-			{
-				buffer.insert(r); //boundedbuffer method
-				sleep(100);		  //randomise?
-			}
-			//do something here?
-		}
-		catch(InterruptedException e)
-		{
-			System.out.println(e);
-		}
-	}	
+class Producer extends thread{
+
+    BoundedBuffer buffer;
+    Random r = new Random();
+
+    Producer(Boundedbuffer bbuffer)
+    {
+        buffer = bbuffer;
+    }
+
+    void prodInsert(){
+    
+        try{
+            while(true){
+                buffer.insert(r); //boundedbuffer method
+                sleep(100);		  //randomise?
+            }
+        }
+        catch(InterruptedException e){
+            //Changed this here to print the error
+            e.printStackTrace();
+        }
+    }	
 }
