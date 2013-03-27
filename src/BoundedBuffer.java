@@ -1,5 +1,16 @@
+/*
+*   Author:  Dylan Lee & Colin Fitzsimons
+*   Date:    27/3/2013
+*               Description
+*   BoundedBuffer is an array of data that should
+*   implement mutual exclusion when adding and
+*   removing information.
+*/
+
+
+
 class BoundedBuffer{
-    private int nextIn = nextOut = size = 0;
+    private int nextIn = 0, nextOut = 0, size = 0;
     private boolean dataAvailable = false, roomAvailable = true;
     private int numItems = 0;
     private int [] buffer;
@@ -12,14 +23,19 @@ class BoundedBuffer{
     }
     //Default buffer at size 5
     BoundedBuffer(){
-        BoundedBuffer(5);
+        this(5);
         //Some kind of default size
     }
-    
-    boolean synchronized insert(int toInsert){
+    //This method can be used to
+    int [] lookAt(){
+        return buffer;
+    }
+    //Method allows the insertion of data into the array if
+    //and only if the array is able to take more data
+    public synchronized void insert(int toInsert) throws InterruptedException{
         if(!roomAvailable){
             //Didn't succeed
-            return false;
+            throw new InterruptedException();
         }
         //Room is available
         //TODO: Check toInsert
@@ -31,12 +47,12 @@ class BoundedBuffer{
         //--Check if it's full--//
         if(numItems == size)
             roomAvailable = false;
-        return true;
     }
-    
-    int synchronized remove() throws InterruptedException{
+    //Method takes an element from the array and returns the
+    //value to the requester.
+    public synchronized int remove() throws InterruptedException{
         if(!dataAvailable)
-            throw new InterruptedException;
+            throw new InterruptedException();
         //Data can be taken
         nextIn--;
         nextOut--;
