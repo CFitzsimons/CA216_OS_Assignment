@@ -8,7 +8,7 @@
 */
 package yulfy.leed.os;
 
-public class Watcher{
+public class Watcher extends Thread{
 
     private BoundedBuffer buffer;
     //Requires the buffer to be passed in.
@@ -18,12 +18,17 @@ public class Watcher{
     
     //Takes in the buffer and prints it out
     void readBuffer(){
-        int [] data = buffer.lookAt();
-        //Loop prints the buffer 5 per line
-        for(int i = 0; i < buffer.size(); i++){
-            System.out.print(data[i] + " ");
-            if(i % 5 == 0)
-                System.out.println();
+        while(true){
+            try{
+            int [] data = buffer.lookAt();
+            //Loop prints the buffer 5 per line
+            for(int i = 0; i < buffer.size(); i++){
+                System.out.print(data[i] + " ");
+                if(i % 5 == 0)
+                    System.out.println();
+            }
+            sleep(1000);
+            }catch(InterruptedException e){ }
         }
     }
     
