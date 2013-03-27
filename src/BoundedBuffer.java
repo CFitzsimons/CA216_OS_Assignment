@@ -7,9 +7,9 @@
 *   removing information.
 */
 
+package yulfy.leed.os;
 
-
-class BoundedBuffer{
+public class BoundedBuffer{
     private int nextIn = 0, nextOut = 0, size = 0;
     private boolean dataAvailable = false, roomAvailable = true;
     private int numItems = 0;

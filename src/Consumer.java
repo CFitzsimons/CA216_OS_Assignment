@@ -2,18 +2,19 @@
 *   Author:  Dylan Lee & Colin Fitzsimons
 *   Date:    27/3/2013
 *               Description
-*   BoundedBuffer is an array of data that should
-*   implement mutual exclusion when adding and
-*   removing information.
+*   A class that takes data out of the buffer
+*   and performs arbitrary operations on it.
 */
 
-class Consumer extend Thread{
-    private BounderBuffer buffer;
+package yulfy.leed.os;
+
+class Consumer extends Thread{
+    private BoundedBuffer buffer;
     private int currentVal;
     
     //Construct private buffer based on value
     //passed in
-    public Consumer(BounderBuffer buffer){
+    public Consumer(BoundedBuffer buffer){
         this.buffer = buffer;
     }
     //Keeps trying to remove an int from the buffer
@@ -23,7 +24,7 @@ class Consumer extend Thread{
             try{
                 //If remove is successfull sleep for 0-100ms
                 currentVal = buffer.remove();
-                sleep(Math.random()*100);
+                sleep((int)Math.random()*100);
             }catch(InterruptedException e){
                 //Don't handle 
             }
