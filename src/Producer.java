@@ -2,27 +2,27 @@ import java.util.Random;
 
 package yulfy.leed.os;
 
-class Producer extends thread{
-
+class Producer extends Thread{
     BoundedBuffer buffer;
-    Random r = new Random();
+    int intval;
 
-    Producer(Boundedbuffer bbuffer)
-    {
-        buffer = bbuffer;
-    }
+    Producer(BoundedBuffer buffer)
+	{
+		this.buffer = buffer;
+	}
 
-    void prodInsert(){
-    
-        try{
-            while(true){
-                buffer.insert(r); //boundedbuffer method
-                sleep(100);		  //randomise?
-            }
-        }
-        catch(InterruptedException e){
-            //Changed this here to print the error
-            e.printStackTrace();
-        }
-    }	
+	void putInt()
+	{
+		while(true){
+			try{
+				intval = (int) Math.random() * 100;			    //get value between 0-100
+				buffer.insert(intval);							//boundedBuffer method
+				sleep((int)Math.random()*100);
+			}
+			//do something here?
+			catch(InterruptedException e){
+				e.printStackTrace();
+			}
+		}
+	}	
 }
