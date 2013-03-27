@@ -30,6 +30,9 @@ public class BoundedBuffer{
     int [] lookAt(){
         return buffer;
     }
+    int size(){
+        return numItems;
+    }
     //Method allows the insertion of data into the array if
     //and only if the array is able to take more data
     public synchronized void insert(int toInsert) throws InterruptedException{
