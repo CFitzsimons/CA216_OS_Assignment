@@ -6,9 +6,7 @@
 *   and performs arbitrary operations on it.
 */
 
-package yulfy.leed.os;
-
-class Consumer extends Thread{
+public class Consumer extends Thread{
     private BoundedBuffer buffer;
     private int currentVal;
     
@@ -18,7 +16,7 @@ class Consumer extends Thread{
         this.buffer = buffer;
     }
     //Keeps trying to remove an int from the buffer
-    public void takeInt(){
+    public void run(){
         while(true){
         
             try{

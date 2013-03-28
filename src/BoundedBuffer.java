@@ -7,8 +7,6 @@
 *   removing information.
 */
 
-package yulfy.leed.os;
-
 public class BoundedBuffer{
     private int nextIn = 0, nextOut = 0, size = 0;
     private boolean dataAvailable = false, roomAvailable = true;
@@ -64,6 +62,9 @@ public class BoundedBuffer{
         //--Check if it's empty--//
         if(numItems == 0)
             dataAvailable = false;
-        return buffer[nextOut + 1];
+        if(nextOut+1 >= buffer.length)
+            return buffer[nextOut];
+        else
+            return buffer[nextOut + 1]; 
     }
 }

@@ -6,7 +6,6 @@
 *   in the buffer and returns the information
 *   to standard output.
 */
-package yulfy.leed.os;
 
 public class Watcher extends Thread{
 
@@ -17,25 +16,19 @@ public class Watcher extends Thread{
     }
     
     //Takes in the buffer and prints it out
-    void readBuffer(){
+    public void run(){
         while(true){
             try{
             int [] data = buffer.lookAt();
             //Loop prints the buffer 5 per line
+            if(buffer.size() == 0)
+                System.out.println("Empty");
             for(int i = 0; i < buffer.size(); i++){
                 System.out.print(data[i] + " ");
-                if(i % 5 == 0)
-                    System.out.println();
             }
+            System.out.println("");
             sleep(1000);
             }catch(InterruptedException e){ }
         }
-    }
-    
-    //Incase the user wants to pass in a different
-    //buffer to check   
-    void readBuffer(BoundedBuffer buffer){
-        this.buffer = buffer;
-        this.readBuffer();
     }
 }
