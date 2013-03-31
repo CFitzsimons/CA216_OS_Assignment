@@ -16,27 +16,18 @@ public class Watcher extends Thread{
     
     //Takes in the buffer and prints it out
     public void run(){
-        try{
-            sleep(1000);
-        }catch(InterruptedException e){
-            System.err.println("Interrupted while starting watcher: Aborting program");
-            e.printStackTrace();
-            System.exit(1);
-        }
-        int counter = 0;
         while(!buffer.timeOut()){
             try{
                 //Loop prints the buffer 5 per line
                 System.out.println(buffer.getData());
                 //System.out.println("Delta: " + buffer.getDelta() + " Size of Buffer: " + buffer.size());
                 sleep(1000);
-                counter++;
             }catch(InterruptedException e){ 
                 //Don't handle
             }
         }
         //Display watcher ending statistics
-        System.out.println("Goodbye from Watcher");
+        System.out.println("Goodbye from " + this.getName() + "A.K.A Watcher");
         System.out.println("Average wait time: " + buffer.averageTime() + "ms");
         
     }
