@@ -1,4 +1,11 @@
-
+/*
+*   Author:  Dylan Lee & Colin Fitzsimons
+*   Date:    31/3/2013
+*               Description
+*   A class that can hold an integer and allows
+*   the controller to time anything from the point
+*   of the classes creation.
+*/
 class TimedInt{
     private long startTime;
     private int number;

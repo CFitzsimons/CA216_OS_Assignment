@@ -1,6 +1,6 @@
 /*
 *   Author:  Dylan Lee & Colin Fitzsimons
-*   Date:    27/3/2013
+*   Date:    31/3/2013
 *               Description
 *   A class that takes data out of the buffer
 *   and performs arbitrary operations on it.

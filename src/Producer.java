@@ -1,6 +1,6 @@
 /*
 *   Author:  Dylan Lee & Colin Fitzsimons
-*   Date:    27/3/2013
+*   Date:    31/3/2013
 *               Description
 *   A class that takes creates a random
 *   integer and puts it into the buffer
@@ -19,13 +19,11 @@ public class Producer extends Thread{
     public void run(){
         while(!buffer.timeOut()){
             try{
-                intval = r.nextInt(100);			    //get value between 0-100
-                buffer.insert(intval);							//boundedBuffer method
+                intval = r.nextInt(100);    //get value between 0-100
+                buffer.insert(intval);      //boundedBuffer method
                 sleep((int)Math.random()*100);
             }
-            //do something here?
             catch(InterruptedException e){
-                //e.printStackTrace();
                 //Don't handle
             }
         }
