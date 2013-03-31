@@ -17,16 +17,15 @@ public class Consumer extends Thread{
     }
     //Keeps trying to remove an int from the buffer
     public void run(){
-        while(!buffer.timeOut()){
+        while(true){
         
             try{
                 //If remove is successfull sleep for 0-100ms
-                int temp = buffer.remove();
+                buffer.remove();
                 sleep((int)Math.random()*100);
             }catch(InterruptedException e){
                 //Don't handle 
             }
         }
-        System.out.println("Goodbye from " + this.getName() + " A.K.A Consumer");
     }
 }

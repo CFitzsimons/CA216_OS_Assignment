@@ -17,10 +17,10 @@ public class Producer extends Thread{
     }
     
     public void run(){
-        while(!buffer.timeOut()){
+        while(true){
             try{
-                intval = r.nextInt(100);			    //get value between 0-100
-                buffer.insert(intval);							//boundedBuffer method
+                intval = r.nextInt(100); //get value between 0-100
+                buffer.insert(intval);	 
                 sleep((int)Math.random()*100);
             }
             //do something here?
@@ -29,6 +29,5 @@ public class Producer extends Thread{
                 //Don't handle
             }
         }
-        System.out.println("Goodbye from " + this.getName() + " A.K.A Producer");
     }	
 }

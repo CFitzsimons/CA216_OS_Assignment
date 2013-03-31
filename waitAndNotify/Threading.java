@@ -6,7 +6,7 @@
 //                                      //
 //////////////////////////////////////////
 public class Threading{
-    public static void main(String [] args) throws InterruptedException{
+    public static void main(String [] args){
         BoundedBuffer bb = new BoundedBuffer(10);
         Consumer c = new Consumer(bb);
         Producer p = new Producer(bb);
@@ -15,10 +15,6 @@ public class Threading{
         c.start();
         p.start();
         w.start();
-       
-       c.join();
-       p.join();
-       w.join();
     }
 
 }
