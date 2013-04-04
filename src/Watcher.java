@@ -18,9 +18,7 @@ public class Watcher extends Thread{
     public void run(){
         while(!buffer.timeOut()){
             try{
-                //Loop prints the buffer 5 per line
                 System.out.println(buffer.getData());
-                //System.out.println("Delta: " + buffer.getDelta() + " Size of Buffer: " + buffer.size());
                 sleep(1000);
             }catch(InterruptedException e){ 
                 //Don't handle
@@ -28,8 +26,6 @@ public class Watcher extends Thread{
         }
         //Display watcher ending statistics
         System.out.println("Goodbye from " + this.getName() + "A.K.A Watcher");
-        System.out.println("Average wait time: " + buffer.averageTime() + "ms");
-        
+        System.out.println("Average wait time: " + buffer.averageTime() + "ms");   
     }
-
 }
